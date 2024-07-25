@@ -2,11 +2,13 @@ package org.ustsinau.chapter2_3.models;
 
 import jakarta.persistence.*;
 
+
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "writers")
+@Table(name = "writers", schema = "schema_flyway")
+
 public class Writer {
 
     @Id
@@ -20,9 +22,9 @@ public class Writer {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @OneToMany(mappedBy = "writer", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = false)
     @OrderBy("id asc")
-    @OneToMany(mappedBy = "writer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts;
+    private List<Post> posts ;
 
 
     public Writer() {

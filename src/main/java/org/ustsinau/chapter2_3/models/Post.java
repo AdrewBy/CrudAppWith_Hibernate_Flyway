@@ -2,12 +2,14 @@ package org.ustsinau.chapter2_3.models;
 
 import jakarta.persistence.*;
 
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "posts", schema = "schema_flyway")
+
 public class Post {
 
     @Id

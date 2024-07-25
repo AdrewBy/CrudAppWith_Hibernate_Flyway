@@ -1,10 +1,13 @@
 package org.ustsinau.chapter2_3.models;
 
 import jakarta.persistence.*;
+
+
 import java.util.Objects;
 
 @Entity
-@Table(name = "labels")
+@Table(name = "labels", schema = "schema_flyway")
+
 public class Label {
 
     @Id

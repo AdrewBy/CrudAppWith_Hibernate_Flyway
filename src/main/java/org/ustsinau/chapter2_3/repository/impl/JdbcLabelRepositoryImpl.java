@@ -4,10 +4,8 @@ package org.ustsinau.chapter2_3.repository.impl;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
 import org.ustsinau.chapter2_3.models.Label;
 import org.ustsinau.chapter2_3.repository.LabelRepository;
-
 
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class JdbcLabelRepositoryImpl implements LabelRepository {
 
     @Override
     public Label create(Label label) {
-        //  String sql = "Insert into labels (name) values (?)";
+
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
@@ -36,7 +34,7 @@ public class JdbcLabelRepositoryImpl implements LabelRepository {
 
     @Override
     public Label update(Label newLabel) {
-        //  String sql = "Update labels set name =? where id = ?";
+
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
@@ -88,7 +86,7 @@ public class JdbcLabelRepositoryImpl implements LabelRepository {
 
     @Override
     public Label getById(Long id) {
-        //   String sql = "Select l.id as label_id, l.name from labels l where id = ?";
+
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.get(Label.class, id);
         } catch (Exception e) {

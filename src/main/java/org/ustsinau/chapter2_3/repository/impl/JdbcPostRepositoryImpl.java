@@ -16,7 +16,6 @@ public class JdbcPostRepositoryImpl implements PostRepository {
 
     @Override
     public Post create(Post post) {
-        //    String sql = "INSERT INTO posts (content, postStatus, created, updated) VALUES (?,?,?,?)";
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
@@ -34,9 +33,6 @@ public class JdbcPostRepositoryImpl implements PostRepository {
 
     @Override
     public Post update(Post post) {
-//        String updatePostSql = "UPDATE posts SET content = ?, postStatus = ?, updated = ? WHERE id = ?";
-//        String updateLabelSql = "INSERT INTO Post_Label (post_id, label_id) VALUES (?, ?) ON DUPLICATE KEY UPDATE post_id = VALUES(post_id)";
-//        String deleteLabelsSql = "DELETE FROM Post_Label WHERE post_id = ?";
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -73,7 +69,7 @@ public class JdbcPostRepositoryImpl implements PostRepository {
 
         @Override
         public void delete (Long id){
-            //     String sql = "DELETE FROM posts WHERE id = ?";
+
             try (Session session = HibernateUtil.getSessionFactory().openSession()) {
                 Transaction transaction = session.beginTransaction();
                 try {

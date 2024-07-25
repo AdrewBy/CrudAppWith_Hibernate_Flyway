@@ -13,10 +13,8 @@ public class HibernateUtil {
     private static final String PROPERTIES_FILE = "hibernate.properties";
     private static SessionFactory sessionFactory;
 
-    // Приватный конструктор для предотвращения создания экземпляров класса
     private HibernateUtil() {}
 
-    // Метод для инициализации SessionFactory, синхронизированный для потокобезопасности
     private static synchronized void buildSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -53,7 +51,6 @@ public class HibernateUtil {
                 // Создаем и инициализируем SessionFactory
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Throwable ex) {
-                // Ловим любые ошибки конфигурации или подключения
                 System.err.println("Initial SessionFactory creation failed." + ex);
                 throw new ExceptionInInitializerError(ex);
             }
