@@ -93,14 +93,7 @@ public class JdbcLabelRepositoryImpl implements LabelRepository {
             throw new RuntimeException("Error getting label by id", e);
         }
     }
-
-    @Override
     public List<Label> getAll() {
-        return getAllLabelsInternal();
-    }
-
-
-    private List<Label> getAllLabelsInternal() {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 

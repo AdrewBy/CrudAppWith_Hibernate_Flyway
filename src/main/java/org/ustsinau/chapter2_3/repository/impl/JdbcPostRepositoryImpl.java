@@ -101,7 +101,7 @@ public class JdbcPostRepositoryImpl implements PostRepository {
             }
         }
 
-        private List<Post> getAllPostsInternal () {
+        public List<Post> getAll () {
 
             try (Session session = HibernateUtil.getSessionFactory().openSession()) {
                 String hql = "FROM Post p LEFT JOIN FETCH p.labels order by p.id";
@@ -110,12 +110,6 @@ public class JdbcPostRepositoryImpl implements PostRepository {
             } catch (Exception e) {
                 throw new RuntimeException("Error retrieving all posts", e);
             }
-        }
-
-
-        @Override
-        public List<Post> getAll () {
-            return getAllPostsInternal();
         }
 
     }

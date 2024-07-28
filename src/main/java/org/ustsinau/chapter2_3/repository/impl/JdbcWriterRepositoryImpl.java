@@ -103,14 +103,7 @@ public class JdbcWriterRepositoryImpl implements WriterRepository {
         }
     }
 
-
-    @Override
     public List<Writer> getAll() {
-        return getAllWritersInternal();
-    }
-
-
-    private List<Writer> getAllWritersInternal() {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             String hql = "FROM Writer w ORDER BY w.id";
